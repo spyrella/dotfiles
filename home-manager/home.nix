@@ -46,14 +46,24 @@
 
   # List packages installed in user profile. 
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [ 
+    wget
+    nodejs_18
+    syncthing
+    steam
+    discord
+    vlc
+  ];
 
   # Enable firefox and use the KDE file picker.
   programs.firefox = {
     enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
+  };
+
+  # Enable VS Code
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [];
   };
 
   # Enable home-manager and git

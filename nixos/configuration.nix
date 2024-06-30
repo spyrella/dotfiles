@@ -59,10 +59,60 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # FIXME: Add the rest of your current configuration
+  # Current Configuration
+  
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Set your hostname
   networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  
+  # Configure keymap in X11
+  services.xserver.xkb.layout = "us";
+
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = true;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -73,9 +123,48 @@
         # Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = [ "networkmanager" "wheel" ];
     };
   };
+
+    # List packages installed in system profile.
+  environment.systemPackages = with pkgs; [
+    git
+  ];
+
+  # List services that you want to enable:
+
+  # Enable Wayland and Plasma 6
+  services.xserver.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "ks";
+
+  # Enabling native wayland support
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # Exclude the following kde packages
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa kate
+  ];
+
+  # Enable sound.
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput.enable = true;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 
   # Setup SSH server.
   services.openssh = {
@@ -87,6 +176,14 @@
       # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
+  };
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
