@@ -38,23 +38,35 @@
     };
   };
 
-  # TODO: Set your username
+  # Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "ks";
+    homeDirectory = "/home/ks";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # List packages installed in user profile. 
+  programs.neovim.enable = true;
+  home.packages = with pkgs; [ steam ];
+
+  # Enable firefox and use the KDE file picker.
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName  = "spyrella";
+    userEmail = "16845165+spyrella@users.noreply.github.com";
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }
