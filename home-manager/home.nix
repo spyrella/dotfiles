@@ -51,10 +51,13 @@
     wget
     nodejs_18
     syncthing
-    steam
     discord
     vlc
   ];
+
+  home.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+  };
 
   # Enable firefox and use the KDE file picker.
   programs.firefox = {
@@ -74,6 +77,15 @@
     userName = "spyrella";
     userEmail = "16845165+spyrella@users.noreply.github.com";
   };
+
+services = {
+    syncthing = {
+        enable = true;
+        user = "ks";
+        dataDir = "/home/ks/Documents";    # Default folder for new synced folders
+        configDir = "/home/ks/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
+    };
+};
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

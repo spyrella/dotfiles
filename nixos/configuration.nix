@@ -84,6 +84,8 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -145,7 +147,22 @@
     nvd
     nixfmt-rfc-style
     git
+    mangohud
+    protonup
+    lutris
+    heroic
+    bottles
   ];
+
+  programs.gamemode.enable = true;
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   # List services that you want to enable:
 
