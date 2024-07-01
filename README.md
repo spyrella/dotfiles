@@ -55,10 +55,8 @@
 8. **Setup home manager & apply your home configuration:**
 
    ```bash
-   home-manager switch --flake .#ks@nixos
+   nix shell nixpkgs#home-manager --extra-experimental-features 'nix-command flakes'
    ```
-
-    (If you don't have home-manager installed, try `nix shell nixpkgs#home-manager --extra-experimental-features 'nix-command flakes'`)
 
 9. **Reboot system**
 
@@ -76,15 +74,19 @@
     rm -f ./nixos/hardware-configuration.nix && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
     ```
 
-3. **Rebuild System:**
+3. **Rebuild System & Home Manager:**
 
     ```bash
     sudo nixos-rebuild switch --flake .#nixos
     ```
 
+    ```bash
+    home-manager switch --flake .#ks@nixos
+    ```
+
 4. **Reboot system**
 
-5. **Use the following commands:**
+5. **Use the following commands instead:**
 
     ```bash
     nh os switch
