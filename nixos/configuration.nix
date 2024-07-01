@@ -133,16 +133,19 @@
     };
   };
 
+  # Set up flake dotfile variable
+  environment.sessionVariables = {
+    FLAKE = "/home/ks/dotfiles";
+  };
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     nh
+    nix-output-monitor
+    nvd
     nixfmt-rfc-style
     git
   ];
-
-    environment.sessionVariables = {
-    FLAKE = "/home/ks/dotfiles";
-  };
 
   # List services that you want to enable:
 
