@@ -68,13 +68,20 @@
     passwd
     ```
 
-2. **Replace hardware-configuration:**
+2. **Clone the configuration repository and navigate to it:**
+
+   ```bash
+   git clone https://github.com/spyrella/dotfiles.git
+   cd dotfiles
+   ```
+
+3. **Replace hardware-configuration:**
 
     ```bash
     rm -f ./nixos/hardware-configuration.nix && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
     ```
 
-3. **Rebuild System & Home Manager:**
+4. **Rebuild System & Home Manager:**
 
     ```bash
     sudo nixos-rebuild switch --flake .#nixos
@@ -84,9 +91,9 @@
     home-manager switch --flake .#ks@nixos
     ```
 
-4. **Reboot system**
+5. **Reboot system**
 
-5. **Use the following commands instead:**
+6. **Use the following commands instead:**
 
     ```bash
     nh os switch
