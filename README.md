@@ -56,6 +56,6 @@
    home-manager switch --flake .#ks@nixos
    ```
 
-    (If you don't have home-manager installed, try `nix shell nixpkgs#home-manager`.)
+    (If you don't have home-manager installed, try `nix shell nixpkgs#home-manager --extra-experimental-features 'nix-command flakes'`)
 
 9. **Reboot system**

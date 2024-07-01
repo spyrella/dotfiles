@@ -1,6 +1,13 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -34,23 +41,26 @@
     };
   };
 
-  nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
-    # Opinionated: disable channels
-    channel.enable = false;
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        flake-registry = "";
+        # Workaround for https://github.com/NixOS/nix/issues/9574
+        nix-path = config.nix.nixPath;
+      };
+      # Opinionated: disable channels
+      channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+      # Opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    };
 
   # Current Configuration
 
@@ -72,7 +82,9 @@
   services.xserver.xkb.layout = "us";
 
   # Enable OpenGL
-  hardware.opengl = { enable = true; };
+  hardware.opengl = {
+    enable = true;
+  };
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -114,12 +126,18 @@
         # Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
     };
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [ nixfmt git ];
+  environment.systemPackages = with pkgs; [
+    nixfmt-rfc-style
+    git
+  ];
 
   # List services that you want to enable:
 
@@ -135,7 +153,10 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Exclude the following kde packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [ elisa kate ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    kate
+  ];
 
   # Enable sound.
   security.rtkit.enable = true;
