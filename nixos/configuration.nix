@@ -1,12 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -40,8 +34,7 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
       # Enable flakes and new 'nix' command
@@ -55,12 +48,12 @@
     channel.enable = false;
 
     # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
   # Current Configuration
-  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -74,17 +67,15 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
 
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.opengl = { enable = true; };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
@@ -127,10 +118,8 @@
     };
   };
 
-    # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    git
-  ];
+  # List packages installed in system profile.
+  environment.systemPackages = with pkgs; [ nixfmt git ];
 
   # List services that you want to enable:
 
@@ -146,9 +135,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Exclude the following kde packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa kate
-  ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [ elisa kate ];
 
   # Enable sound.
   security.rtkit.enable = true;

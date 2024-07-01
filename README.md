@@ -19,7 +19,7 @@
 2. **Clone the configuration repository and navigate to it:**
 
    ```bash
-   git clone https://github.com/test/nix-config.git
+   git clone https://github.com/spyrella/nix-config.git
    cd nix-config
    ```
 
@@ -38,13 +38,19 @@
    sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ./disko.nix
    ```
 
-6. **Generate config & apply your system configuration:**
+6. **Generate config & replace hardware-configuration**
 
    ```bash
-   nixos-generate-config --root /mnt && nixos-install --flake .#nixos
+   nixos-generate-config --root /mnt && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
    ```
 
-7. **Setup home manager & apply your home configuration:**
+6. **Apply your system configuration:**
+
+   ```bash
+   nixos-install --flake .#nixos
+   ```
+
+8. **Setup home manager & apply your home configuration:**
 
    ```bash
    home-manager switch --flake .#ks@nixos
@@ -52,4 +58,4 @@
 
     (If you don't have home-manager installed, try `nix shell nixpkgs#home-manager`.)
 
-8. **Reboot system**
+9. **Reboot system**

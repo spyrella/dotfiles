@@ -1,12 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -46,31 +40,22 @@
 
   # List packages installed in user profile. 
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ 
-    wget
-    nodejs_18
-    syncthing
-    steam
-    discord
-    vlc
-  ];
+  home.packages = with pkgs; [ wget nodejs_18 syncthing steam discord vlc ];
 
   # Enable firefox and use the KDE file picker.
-  programs.firefox = {
-    enable = true;
-  };
+  programs.firefox = { enable = true; };
 
   # Enable VS Code
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [];
+    extensions = with pkgs.vscode-extensions; [ ];
   };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git = {
     enable = true;
-    userName  = "spyrella";
+    userName = "spyrella";
     userEmail = "16845165+spyrella@users.noreply.github.com";
   };
 
