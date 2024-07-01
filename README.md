@@ -19,8 +19,8 @@
 2. **Clone the configuration repository and navigate to it:**
 
    ```bash
-   git clone https://github.com/spyrella/nix-config.git
-   cd nix-config
+   git clone https://github.com/spyrella/dotfiles.git
+   cd dotfiles
    ```
 
 3. **Identify the disk for setup:**
@@ -41,10 +41,12 @@
 6. **Generate config & replace hardware-configuration**
 
    ```bash
-   nixos-generate-config --root /mnt && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
+   nixos-generate-config --root /mnt \
+   && rm -f ./nixos/hardware-configuration.nix \
+   && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
    ```
 
-6. **Apply your system configuration:**
+7. **Apply your system configuration:**
 
    ```bash
    nixos-install --flake .#nixos

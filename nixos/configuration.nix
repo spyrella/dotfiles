@@ -135,9 +135,14 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    nh
     nixfmt-rfc-style
     git
   ];
+
+    environment.sessionVariables = {
+    FLAKE = "/home/ks/dotfiles";
+  };
 
   # List services that you want to enable:
 
