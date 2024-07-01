@@ -78,7 +78,7 @@
 3. **Replace hardware-configuration:**
 
     ```bash
-    rm -f ./nixos/hardware-configuration.nix && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
+    rm -f ./nixos/hardware-configuration.nix && cp -i /etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
     ```
 
 4. **Rebuild System & Home Manager:**
