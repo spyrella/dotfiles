@@ -61,3 +61,35 @@
     (If you don't have home-manager installed, try `nix shell nixpkgs#home-manager --extra-experimental-features 'nix-command flakes'`)
 
 9. **Reboot system**
+
+## Post-Installation Setup
+
+1. **Reset Password:**
+
+    ```bash
+    passwd
+    ```
+
+2. **Replace hardware-configuration:**
+
+    ```bash
+    rm -f ./nixos/hardware-configuration.nix && cp -i /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
+    ```
+
+3. **Rebuild System:**
+
+    ```bash
+    sudo nixos-rebuild switch --flake .#nixos
+    ```
+
+4. **Reboot system**
+
+5. **Use the following commands:**
+
+    ```bash
+    nh os switch
+    ```
+
+    ```bash
+    nh home switch
+    ```
