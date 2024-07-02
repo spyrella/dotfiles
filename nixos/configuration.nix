@@ -183,6 +183,14 @@
     kate
   ];
 
+  # Enable Syncthing
+  services.syncthing = {
+    enable = true;
+    user = "ks";
+    dataDir = "/home/ks/Documents";
+    configDir = "/home/ks/.config/syncthing"; # Folder for Syncthing's settings and keys
+  };
+
   # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {

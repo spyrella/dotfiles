@@ -10,8 +10,10 @@
 {
   # You can import other home-manager modules here
   imports = [
+
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
+    inputs.lan-mouse.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -53,6 +55,7 @@
     syncthing
     discord
     vlc
+    p7zip
   ];
 
   home.sessionVariables = {
@@ -78,14 +81,11 @@
     userEmail = "16845165+spyrella@users.noreply.github.com";
   };
 
-services = {
-    syncthing = {
-        enable = true;
-        user = "ks";
-        dataDir = "/home/ks/Documents";    # Default folder for new synced folders
-        configDir = "/home/ks/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
-    };
-};
+  programs.lan-mouse = {
+    enable = true;
+    systemd = true;
+    settings = { };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

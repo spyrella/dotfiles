@@ -11,6 +11,9 @@
 
     # Nixos Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Lan-mouse
+    lan-mouse.url = "github:feschber/lan-mouse";
   };
 
   outputs =
