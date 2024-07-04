@@ -19,6 +19,7 @@
 2. **Clone the configuration repository and navigate to it:**
 
    ```bash
+   mkdir -p Work && cd Work
    git clone https://github.com/spyrella/dotfiles.git
    cd dotfiles
    ```
@@ -70,10 +71,11 @@
 
 2. **Clone the configuration repository and navigate to it:**
 
-   ```bash
-   git clone https://github.com/spyrella/dotfiles.git
-   cd dotfiles
-   ```
+      ```bash
+      mkdir -p Work && cd Work
+      git clone https://github.com/spyrella/dotfiles.git
+      cd dotfiles
+      ```
 
 3. **Replace hardware-configuration:**
 

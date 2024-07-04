@@ -50,35 +50,34 @@
   # List packages installed in user profile. 
   programs.neovim.enable = true;
   home.packages = with pkgs; [
-    wget
-    fzf
-    fsearch
-    ffmpeg_7-full
-    gparted
-    nodejs_20
-    temurin-bin-17
-    discord
-    mangohud
-    lutris
-    heroic
-    bottles
-    vlc
-    p7zip
     anydesk
+    bottles
     deluge
+    discord
+    ffmpeg_7-full
+    fsearch
+    fzf
     gimp-with-plugins
-    inkscape-with-extensions
     google-chrome
     handbrake
-    moonlight-qt
+    heroic
+    inkscape-with-extensions
+    lutris
+    mangohud
     megasync
+    moonlight-qt
+    nodejs_20
     obs-studio
     obsidian
     onlyoffice-bin_latest
-    prismlauncher
-    puddletag
+    p7zip
     plex
     plexamp
+    prismlauncher
+    puddletag
+    temurin-bin-17
+    vlc
+    wget
     xivlauncher
     yt-dlg
   ];

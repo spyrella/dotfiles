@@ -36,7 +36,6 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };
@@ -67,12 +66,12 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
 
   # Set your hostname
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  # Open up network ports
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
@@ -85,6 +84,10 @@
       {
         from = 47998;
         to = 48000;
+      }
+      {
+        from = 8000;
+        to = 8010;
       }
     ];
   };
@@ -159,28 +162,30 @@
 
   # Set up flake dotfile variable
   environment.sessionVariables = {
-    FLAKE = "/home/ks/dotfiles";
+    FLAKE = "/home/ks/Work/dotfiles";
   };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     git
+    gparted
     nh
     nix-output-monitor
-    nvd
     nixfmt-rfc-style
+    nvd
     piper
     protonup
     wineWowPackages.waylandFull
-    alsa-scarlett-gui
-    tailscale
   ];
 
+  # Enable GameMode, a daemon/lib combo optimizes OS for games.
+  # To make sure Steam starts a game with GameMode
+  # gamemoderun %command%
   programs.gamemode.enable = true;
 
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
+    gamescopeSession.enable = true; # Enables features such as resolution upscaling and stretched aspect ratios
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
@@ -205,12 +210,15 @@
     kate
   ];
 
+  # Enable Tailscale
+  services.tailscale.enable = true;
+
   # Enable Syncthing
   services.syncthing = {
     enable = true;
     user = "ks";
     dataDir = "/home/ks/Documents";
-    configDir = "/home/ks/.config/syncthing"; # Folder for Syncthing's settings and keys
+    configDir = "/home/ks/.config/syncthing";
   };
 
   # Enable sound.
@@ -227,7 +235,7 @@
   services.hardware.openrgb.enable = true;
   services.hardware.openrgb.motherboard = "amd";
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support.
   services.libinput.enable = true;
 
   # Enable ratbagd for configuring gaming mice.
