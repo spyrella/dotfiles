@@ -51,11 +51,36 @@
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     wget
-    nodejs_18
-    syncthing
+    fzf
+    fsearch
+    ffmpeg_7-full
+    gparted
+    nodejs_20
+    temurin-bin-17
     discord
+    mangohud
+    lutris
+    heroic
+    bottles
     vlc
     p7zip
+    anydesk
+    deluge
+    gimp-with-plugins
+    inkscape-with-extensions
+    google-chrome
+    handbrake
+    moonlight-qt
+    megasync
+    obs-studio
+    obsidian
+    onlyoffice-bin_latest
+    prismlauncher
+    puddletag
+    plex
+    plexamp
+    xivlauncher
+    yt-dlg
   ];
 
   home.sessionVariables = {
@@ -89,6 +114,8 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.05";

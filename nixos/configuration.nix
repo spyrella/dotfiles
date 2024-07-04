@@ -67,10 +67,27 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
 
   # Set your hostname
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      47984
+      47989
+      47990
+      48010
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 47998;
+        to = 48000;
+      }
+    ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -80,6 +97,10 @@
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
+
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable OpenGL
   hardware.opengl = {
@@ -116,7 +137,8 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -142,16 +164,16 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    git
     nh
     nix-output-monitor
     nvd
     nixfmt-rfc-style
-    git
-    mangohud
+    piper
     protonup
-    lutris
-    heroic
-    bottles
+    wineWowPackages.waylandFull
+    alsa-scarlett-gui
+    tailscale
   ];
 
   programs.gamemode.enable = true;
@@ -201,11 +223,21 @@
     jack.enable = true;
   };
 
+  # Enable OpenRGB server, for RGB lighting control.
+  services.hardware.openrgb.enable = true;
+  services.hardware.openrgb.motherboard = "amd";
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  # Enable ratbagd for configuring gaming mice.
+  services.ratbagd.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable Sunshine, a self-hosted game stream host for Moonlight.
+  services.sunshine.enable = true;
 
   # Setup SSH server.
   services.openssh = {
