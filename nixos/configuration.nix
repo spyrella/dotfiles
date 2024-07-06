@@ -144,6 +144,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ks = {
@@ -169,13 +171,16 @@
   environment.systemPackages = with pkgs; [
     git
     gparted
+    lutris
     nh
     nix-output-monitor
     nixfmt-rfc-style
     nvd
     piper
     protonup
+    winetricks
     wineWowPackages.waylandFull
+    yarn
   ];
 
   # Enable GameMode, a daemon/lib combo optimizes OS for games.

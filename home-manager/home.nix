@@ -62,7 +62,6 @@
     handbrake
     heroic
     inkscape-with-extensions
-    lutris
     mangohud
     megasync
     moonlight-qt
@@ -76,6 +75,7 @@
     prismlauncher
     puddletag
     temurin-bin-17
+    unrar
     vlc
     wget
     xivlauncher
@@ -113,8 +113,6 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.05";
