@@ -50,7 +50,6 @@
   # List packages installed in user profile. 
   programs.neovim.enable = true;
   home.packages = with pkgs; [
-    anydesk
     bottles
     deluge
     discord
@@ -74,6 +73,7 @@
     plexamp
     prismlauncher
     puddletag
+    rustdesk-flutter
     temurin-bin-17
     unrar
     vlc
