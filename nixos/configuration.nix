@@ -178,6 +178,7 @@
     nixfmt-rfc-style
     nvd
     piper
+    pm2
     protonup
     winetricks
     wineWowPackages.waylandFull
