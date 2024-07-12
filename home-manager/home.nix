@@ -50,9 +50,9 @@
   # List packages installed in user profile. 
   programs.neovim.enable = true;
   home.packages = with pkgs; [
+    anydesk
     bottles
     deluge
-    discord
     ffmpeg_7-full
     fsearch
     fzf
@@ -76,6 +76,7 @@
     rustdesk-flutter
     temurin-bin-17
     unrar
+    vesktop
     vlc
     wget
     xivlauncher
