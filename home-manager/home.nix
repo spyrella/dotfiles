@@ -57,6 +57,7 @@
     fsearch
     fzf
     gimp-with-plugins
+    gpt4all
     google-chrome
     handbrake
     heroic
