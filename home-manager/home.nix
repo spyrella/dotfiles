@@ -54,6 +54,7 @@
     bottles
     deluge
     ffmpeg_7-full
+    fontforge-gtk
     fsearch
     fzf
     gimp-with-plugins
@@ -80,7 +81,6 @@
     vesktop
     vlc
     wget
-    xivlauncher
     yt-dlg
   ];
 

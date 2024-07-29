@@ -170,7 +170,10 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    fd
+    firebase-tools
     git
+    gnome.gnome-software
     gparted
     lutris
     nh
@@ -182,6 +185,7 @@
     protonup
     winetricks
     wineWowPackages.waylandFull
+    xivlauncher
     yarn
   ];
 
@@ -216,6 +220,9 @@
     elisa
     kate
   ];
+
+  # Enable Flatpak
+  services.flatpak.enable = true;
 
   # Enable Tailscale
   services.tailscale.enable = true;
