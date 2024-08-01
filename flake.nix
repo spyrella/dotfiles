@@ -5,6 +5,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
+    # Nixpkgs (Unstable)
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +17,10 @@
 
     # Lan-mouse
     lan-mouse.url = "github:feschber/lan-mouse";
+
+    # Snap
+    nix-snapd.url = "github:nix-community/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -21,6 +28,7 @@
       self,
       nixpkgs,
       home-manager,
+      nix-snapd,
       ...
     }@inputs:
     let
@@ -36,7 +44,11 @@
             inherit inputs outputs;
           };
           # > Our main nixos configuration file <
-          modules = [ ./nixos/configuration.nix ];
+          modules = [
+            ./nixos/configuration.nix
+            nix-snapd.nixosModules.default
+            { services.snap.enable = true; }
+          ];
         };
       };
 

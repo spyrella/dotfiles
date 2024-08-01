@@ -170,6 +170,7 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    appimage-run
     fd
     firebase-tools
     git
@@ -219,6 +220,14 @@
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     elisa
     kate
+  ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    electron
+    glib
   ];
 
   # Enable Flatpak
