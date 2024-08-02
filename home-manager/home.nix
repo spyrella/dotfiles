@@ -63,6 +63,7 @@
     handbrake
     heroic
     inkscape-with-extensions
+    libreoffice-qt
     mangohud
     megasync
     moonlight-qt
