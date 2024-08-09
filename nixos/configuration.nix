@@ -146,7 +146,8 @@
   };
 
   boot.blacklistedKernelModules = [ "nouveau" ];
-
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
+  
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ks = {
@@ -205,22 +206,17 @@
 
   # List services that you want to enable:
 
-  # Enable Wayland and Plasma 6
+  # Enable COSMIC
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+
+  # Auto Login
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ks";
 
   # Enabling native wayland support
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # Exclude the following kde packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa
-    kate
-  ];
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [

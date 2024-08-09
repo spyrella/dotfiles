@@ -21,6 +21,11 @@
     # Snap
     nix-snapd.url = "github:nix-community/nix-snapd";
     nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +34,7 @@
       nixpkgs,
       home-manager,
       nix-snapd,
+      nixos-cosmic,
       ...
     }@inputs:
     let
@@ -46,8 +52,15 @@
           # > Our main nixos configuration file <
           modules = [
             ./nixos/configuration.nix
-            nix-snapd.nixosModules.default
             { services.snap.enable = true; }
+            nix-snapd.nixosModules.default
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
           ];
         };
       };
