@@ -175,7 +175,6 @@
     fd
     firebase-tools
     git
-    gnome.gnome-software
     gparted
     lutris
     nh
@@ -185,6 +184,7 @@
     piper
     pm2
     protonup
+    trayscale
     winetricks
     wineWowPackages.waylandFull
     xivlauncher
