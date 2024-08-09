@@ -15,9 +15,6 @@
     # Nixos Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Lan-mouse
-    lan-mouse.url = "github:feschber/lan-mouse";
-
     # Snap
     nix-snapd.url = "github:nix-community/nix-snapd";
     nix-snapd.inputs.nixpkgs.follows = "nixpkgs";

@@ -176,6 +176,7 @@
     firebase-tools
     git
     gparted
+    lan-mouse
     lutris
     nh
     nix-output-monitor

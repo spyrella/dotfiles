@@ -13,7 +13,6 @@
 
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
-    inputs.lan-mouse.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -106,12 +105,6 @@
     enable = true;
     userName = "spyrella";
     userEmail = "16845165+spyrella@users.noreply.github.com";
-  };
-
-  programs.lan-mouse = {
-    enable = true;
-    systemd = true;
-    settings = { };
   };
 
   # Nicely reload system units when changing configs
