@@ -62,6 +62,8 @@
     handbrake
     heroic
     inkscape-with-extensions
+    kdePackages.ark
+    kdePackages.gwenview
     libreoffice-qt
     mangohud
     megasync
@@ -69,6 +71,7 @@
     nodejs_20
     obs-studio
     obsidian
+    okular
     onlyoffice-bin_latest
     p7zip
     plex
