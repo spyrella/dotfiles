@@ -56,6 +56,7 @@
     fontforge-gtk
     fsearch
     fzf
+    gh
     gimp-with-plugins
     gpt4all
     google-chrome

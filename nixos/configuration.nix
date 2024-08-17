@@ -184,7 +184,7 @@
     nvd
     piper
     pm2
-    protonup
+    protonup-qt
     trayscale
     winetricks
     wineWowPackages.waylandFull
