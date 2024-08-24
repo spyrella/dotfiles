@@ -208,9 +208,14 @@
   # List services that you want to enable:
 
   # Enable COSMIC
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
   services.xserver.enable = true;
+
+  # Enable Wayland and Plasma 6
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Auto Login
   services.displayManager.autoLogin.enable = true;
