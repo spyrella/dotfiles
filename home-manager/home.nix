@@ -58,6 +58,7 @@
     fzf
     gh
     gimp-with-plugins
+    gitkraken
     gpt4all
     google-chrome
     handbrake
