@@ -230,6 +230,7 @@
     glibc
     glib
     gcc
+    libGL
 
     # For Electron applications
     electron
