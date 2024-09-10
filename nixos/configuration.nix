@@ -147,7 +147,7 @@
 
   boot.blacklistedKernelModules = [ "nouveau" ];
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
-  
+
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ks = {
@@ -226,10 +226,32 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-    electron
+    # Core libraries
+    glibc
     glib
+    gcc
+
+    # For Electron applications
+    electron
+
+    # GTK and GDK-related libraries
+    gtk3
+    gdk-pixbuf
+    libappindicator-gtk3
+    libepoxy
+
+    # Font rendering and text libraries
+    pango
+    harfbuzz
+    fontconfig
+
+    # Accessibility Toolkit (ATK) and graphics libraries
+    atk
+    cairo
+
+    # XDG desktop integration (if needed)
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
   ];
 
   # Enable Flatpak
