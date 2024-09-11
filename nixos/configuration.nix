@@ -176,7 +176,13 @@
     firebase-tools
     git
     gparted
+    gnome.adwaita-icon-theme
+    gtk-engine-murrine
+    gtk3
+    gtk2
     lan-mouse
+    libappindicator-gtk3
+    libsForQt5.applet-window-appmenu
     lutris
     nh
     nix-output-monitor
@@ -192,6 +198,11 @@
     yarn
   ];
 
+  # Glib Schemas Fix
+  environment.variables = rec {
+    GSETTINGS_SCHEMA_DIR="${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+  }; 
+
   # Enable GameMode, a daemon/lib combo optimizes OS for games.
   # To make sure Steam starts a game with GameMode
   # gamemoderun %command%
@@ -204,6 +215,8 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+
+  programs.dconf.enable = true;
 
   # List services that you want to enable:
 
@@ -237,6 +250,7 @@
 
     # GTK and GDK-related libraries
     gtk3
+    gtk2
     gdk-pixbuf
     libappindicator-gtk3
     libepoxy
@@ -249,10 +263,6 @@
     # Accessibility Toolkit (ATK) and graphics libraries
     atk
     cairo
-
-    # XDG desktop integration (if needed)
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
   ];
 
   # Enable Flatpak
