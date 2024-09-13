@@ -191,6 +191,7 @@
     piper
     pm2
     protonup-qt
+    syncthingtray
     trayscale
     winetricks
     wineWowPackages.waylandFull
