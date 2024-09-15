@@ -245,6 +245,11 @@
     glib
     gcc
     libGL
+    xorg.libXext
+    xorg.libXrender
+    mono
+    mono5
+    godot3-mono
 
     # For Electron applications
     electron
@@ -264,6 +269,19 @@
     # Accessibility Toolkit (ATK) and graphics libraries
     atk
     cairo
+
+    # X11 and related libraries for windowing and input
+    xorg.libX11             # Provides X11 client library
+    xorg.libXcursor         # Provides X11 cursor management library
+    xorg.libXinerama        # Provides X11 Xinerama extension library
+    xorg.libXrandr          # Provides X11 RandR extension library
+    xorg.libXi              # Provides X11 Input extension library
+
+    # Sound libraries
+    libpulseaudio
+    alsa-lib
+    pulseaudio
+    mesa
   ];
 
   # Enable Flatpak
