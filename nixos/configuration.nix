@@ -112,7 +112,7 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
+    # driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -181,11 +181,10 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     appimage-run
-    fd
     firebase-tools
     git
     gparted
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     gtk-engine-murrine
     gtk3
     gtk2

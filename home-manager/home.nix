@@ -48,6 +48,7 @@
 
   # List packages installed in user profile. 
   programs.neovim.enable = true;
+  home.enableNixpkgsReleaseCheck = false;
   home.packages = with pkgs; [
     anydesk
     bottles
@@ -59,7 +60,7 @@
     gh
     gimp-with-plugins
     gitkraken
-    gpt4all
+    gpt4all-cuda
     google-chrome
     handbrake
     heroic
@@ -102,6 +103,11 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [ ];
+  };
+
+  # Enable fd
+  programs.fd = {
+    enable = true;
   };
 
   # Enable home-manager and git
