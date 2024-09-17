@@ -76,6 +76,9 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
+      30000
+      30010
+      40000
       47984
       47989
       47990
