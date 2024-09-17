@@ -141,8 +141,8 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   boot.blacklistedKernelModules = [ "nouveau" ];
@@ -169,6 +169,12 @@
     FLAKE = "/home/ks/Work/dotfiles";
   };
 
+  # Protonup
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
+      "\${HOME}/.steam/root/compatibilitytools.d";
+  };
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     appimage-run
@@ -190,7 +196,7 @@
     nvd
     piper
     pm2
-    protonup-qt
+    protonup
     syncthingtray
     trayscale
     winetricks
