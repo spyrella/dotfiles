@@ -52,6 +52,8 @@
         flake-registry = "";
         # Workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
+        # Store will be optimised during every build
+        auto-optimise-store = true;
       };
       # Opinionated: disable channels
       channel.enable = false;
