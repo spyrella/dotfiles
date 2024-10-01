@@ -55,33 +55,34 @@
     deluge
     ffmpeg_7-full
     fontforge-gtk
-    fsearch
     fzf
     gh
     gimp-with-plugins
     gitkraken
-    gpt4all-cuda
     google-chrome
     handbrake
     heroic
+    imagemagick
     inkscape-with-extensions
     kdePackages.ark
     kdePackages.gwenview
     libreoffice-qt
     mangohud
-    megasync
     moonlight-qt
     nodejs_20
     obs-studio
     obsidian
     okular
     onlyoffice-bin_latest
+    openmw-tes3mp
     p7zip
     plex
     plexamp
     prismlauncher
     puddletag
+    retroarchFull
     rustdesk-flutter
+    ryujinx
     temurin-bin-17
     unrar
     vesktop

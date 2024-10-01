@@ -308,6 +308,11 @@
     configDir = "/home/ks/.config/syncthing";
   };
 
+
+  # Enable Virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {
