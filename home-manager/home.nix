@@ -51,6 +51,7 @@
   home.enableNixpkgsReleaseCheck = false;
   home.packages = with pkgs; [
     anydesk
+    aseprite
     bottles
     deluge
     ffmpeg_7-full
