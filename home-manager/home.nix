@@ -81,7 +81,6 @@
     plexamp
     prismlauncher
     puddletag
-    retroarchFull
     rustdesk-flutter
     ryujinx
     temurin-bin-17
