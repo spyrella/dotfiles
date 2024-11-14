@@ -65,6 +65,7 @@
     heroic
     imagemagick
     inkscape-with-extensions
+    input-leap
     kdePackages.ark
     kdePackages.gwenview
     libreoffice-qt

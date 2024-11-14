@@ -190,7 +190,6 @@
     gtk-engine-murrine
     gtk3
     gtk2
-    lan-mouse
     libappindicator-gtk3
     libsForQt5.applet-window-appmenu
     lutris
