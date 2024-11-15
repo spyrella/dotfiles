@@ -76,13 +76,8 @@
     obsidian
     okular
     onlyoffice-bin_latest
-    openmw-tes3mp
     p7zip
-    plex
-    plexamp
     prismlauncher
-    puddletag
-    rustdesk-flutter
     ryujinx
     temurin-bin-17
     unrar
