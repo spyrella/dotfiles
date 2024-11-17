@@ -104,3 +104,6 @@
     ```bash
     nh home switch
     ```
+    
+  7. **Optional: Run the following commands for tridactyl:**
+    `bind J tabnext` `bind K tabprev` `unbind <C-f>` `unbind <C-b>`
