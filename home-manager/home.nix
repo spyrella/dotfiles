@@ -54,6 +54,7 @@
     aseprite
     bottles
     deluge
+    devdocs-desktop
     ffmpeg_7-full
     fontforge-gtk
     fzf
@@ -83,6 +84,7 @@
     unrar
     vesktop
     vlc
+    warp-terminal
     wget
     yt-dlg
   ];

@@ -199,6 +199,7 @@
     nvd
     piper
     pm2
+    pnpm
     protonup
     syncthingtray
     trayscale
