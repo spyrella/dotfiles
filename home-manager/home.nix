@@ -51,31 +51,30 @@
   home.enableNixpkgsReleaseCheck = false;
   home.packages = with pkgs; [
     anydesk
-    aseprite
-    bottles
     deluge
     devdocs-desktop
     ffmpeg_7-full
     fontforge-gtk
     fzf
     gh
-    gimp-with-plugins
+    gimp
     gitkraken
+    godot_4
     google-chrome
     handbrake
-    heroic
     imagemagick
     inkscape-with-extensions
     input-leap
     kdePackages.ark
     kdePackages.gwenview
+    kdePackages.okular
     libreoffice-qt
     mangohud
     moonlight-qt
+    neofetch
     nodejs_20
     obs-studio
     obsidian
-    okular
     onlyoffice-bin_latest
     p7zip
     prismlauncher

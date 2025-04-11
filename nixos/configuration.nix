@@ -183,7 +183,6 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     appimage-run
-    firebase-tools
     git
     gparted
     adwaita-icon-theme
@@ -258,8 +257,6 @@
     xorg.libXext
     xorg.libXrender
     mono
-    mono5
-    godot3-mono
 
     # For Electron applications
     electron
